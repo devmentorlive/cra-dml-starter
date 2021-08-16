@@ -1,70 +1,48 @@
-# Getting Started with Create React App
+# DevmentorLive Create React App Starter Template
 
-This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
+## Getting Started
 
-## Available Scripts
+To create an app using this starter
 
-In the project directory, you can run:
+```bash
+npx create-react-app your-app-name --template https://github.com/devmentorlive/cra-dml-starter
+```
 
-### `yarn start`
+## This template uses [TailwindCSS](https://tailwindcss.com/)!
 
-Runs the app in the development mode.\
-Open [http://localhost:3000](http://localhost:3000) to view it in the browser.
+## To run your server (development)
 
-The page will reload if you make edits.\
-You will also see any lint errors in the console.
+```
+cd your-app-name
+npm run start
+```
 
-### `yarn test`
+## Folder structure
 
-Launches the test runner in the interactive watch mode.\
-See the section about [running tests](https://facebook.github.io/create-react-app/docs/running-tests) for more information.
+```bash
+src
+├── app
+├── features
+├── pages
+│   └── index.jsx
+├── ui
+└── index.jsx
+```
 
-### `yarn build`
+This app uses a modified/simplified version of [Atomic Design](https://bradfrost.com/blog/post/atomic-web-design/), better suited for modern web development.
 
-Builds the app for production to the `build` folder.\
-It correctly bundles React in production mode and optimizes the build for the best performance.
+### /app
 
-The build is minified and the filenames include the hashes.\
-Your app is ready to be deployed!
+I use /app to house my router and somethimes, a layout. To create a navigable component, create one in /pages, import it in /app/index.jsx and add a route.
 
-See the section about [deployment](https://facebook.github.io/create-react-app/docs/deployment) for more information.
+### /ui
 
-### `yarn eject`
+This folder is for your "lego blocks", single purpose React components that can be combined together to make more complicated components, known as Features
 
-**Note: this is a one-way operation. Once you `eject`, you can’t go back!**
+### /features
 
-If you aren’t satisfied with the build tool and configuration choices, you can `eject` at any time. This command will remove the single build dependency from your project.
+This folder is for more complex components, or features. Features are created by composing many UI components and usually, state
 
-Instead, it will copy all the configuration files and the transitive dependencies (webpack, Babel, ESLint, etc) right into your project so you have full control over them. All of the commands except `eject` will still work, but they will point to the copied scripts so you can tweak them. At this point you’re on your own.
+### /pages
 
-You don’t have to ever use `eject`. The curated feature set is suitable for small and middle deployments, and you shouldn’t feel obligated to use this feature. However we understand that this tool wouldn’t be useful if you couldn’t customize it when you are ready for it.
-
-## Learn More
-
-You can learn more in the [Create React App documentation](https://facebook.github.io/create-react-app/docs/getting-started).
-
-To learn React, check out the [React documentation](https://reactjs.org/).
-
-### Code Splitting
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/code-splitting](https://facebook.github.io/create-react-app/docs/code-splitting)
-
-### Analyzing the Bundle Size
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/analyzing-the-bundle-size](https://facebook.github.io/create-react-app/docs/analyzing-the-bundle-size)
-
-### Making a Progressive Web App
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/making-a-progressive-web-app](https://facebook.github.io/create-react-app/docs/making-a-progressive-web-app)
-
-### Advanced Configuration
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/advanced-configuration](https://facebook.github.io/create-react-app/docs/advanced-configuration)
-
-### Deployment
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/deployment](https://facebook.github.io/create-react-app/docs/deployment)
-
-### `yarn build` fails to minify
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/troubleshooting#npm-run-build-fails-to-minify](https://facebook.github.io/create-react-app/docs/troubleshooting#npm-run-build-fails-to-minify)
+This folder is for navigable components. A router automagically creates urls for anything in this folder. To create a page, combine features and ui components and put them in a component in this page. Typically state is managed in the feature, and any props that come from the server are passed through pages via the return object from getServerSideProps. Those props are then passed down into features as props, or put into a context.
